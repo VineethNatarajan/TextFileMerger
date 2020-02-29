@@ -4,13 +4,16 @@ import glob
 import os
 
 def fileMerger(GUIValues):
+    if GUIValues['output_filename'] == '':
+        GUIValues['output_filename'] = 'Output_MergedFile'
+        
     if GUIValues['output_folderpath'] == '':
         outFilePath = os.getcwd()
         print(outFilePath)
-        outputFilePath = outFilePath + "/Output_MergedFile.txt"
+        outputFilePath = outFilePath + "/"+ GUIValues['output_filename']+ ".txt"
         tempFilePath = outFilePath + "/tempFile.txt"
     else:
-        outputFilePath = GUIValues['output_folderpath'] + "/Output_MergedFile.txt"
+        outputFilePath = GUIValues['output_folderpath'] + "/" + GUIValues['output_filename']+ ".txt"
         tempFilePath = GUIValues['output_folderpath'] + "/tempFile.txt"
         
     inFilePath = GUIValues['input_folderpath']
